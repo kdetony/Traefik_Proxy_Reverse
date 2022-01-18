@@ -1,0 +1,20 @@
+defaultEntryPoints = ["http", "https"]
+logLevel = "DEBUG"
+
+[docker]
+  endpoint = "unix:///var/run/docker.sock"
+  exposedByDefault = false
+  swarmmode = true 
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+      [[entryPoints.https.tls.certificates]]
+      certFile = "/certs/tls.crt"
+      keyFile = "/certs/tls.key"

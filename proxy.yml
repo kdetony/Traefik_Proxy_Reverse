@@ -1,0 +1,26 @@
+version: "3"
+services:
+  traefik:
+    image: traefik:alpine
+    deploy:
+     labels:
+      - traefik.frontend.rule=Host:tonydev.me
+      - traefik.enable=true
+      - traefik.docker.network=app
+        #- traefik.port=80
+      - traefik.frontend.entryPoints=http,https
+        #- traefik.frontend.headers.SSLRedirect=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${PWD}/traefik.toml:/etc/traefik/traefik.toml
+      - ${PWD}/certs:/certs 
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - app       
+        
+
+networks:
+  app:
+    external: true

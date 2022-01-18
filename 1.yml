@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+
+  plug:
+    image: kdetony/plugapp:0.2
+    networks:
+      - app
+    deploy:
+      labels:
+        - traefik.frontend.rule=Host:tonydev.me
+        - traefik.enable=true
+        - traefik.port=8081
+        - traefik.docker.network=app
+        - traefik.backend=plug  
+        - traefik.redirectorservice.frontend.entryPoints=http
+        - traefik.redirectorservice.frontend.redirect.entryPoint=https
+        - traefik.webservice.frontend.entryPoints=https      
+networks:
+  app:
+    external: true

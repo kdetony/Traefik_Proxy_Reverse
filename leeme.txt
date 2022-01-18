@@ -1,0 +1,3 @@
+https://github.com/Praqma/learn-traefik/blob/master/examples/example3/docker-compose.yml -- base
+
+https://gist.github.com/kekru/d088be6a3fa844089ae62d80c077bb38 --upgrade 2.2 traefik
