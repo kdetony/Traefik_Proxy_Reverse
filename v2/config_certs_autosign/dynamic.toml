@@ -1,0 +1,13 @@
+[tls]
+  [tls.stores]
+    [tls.stores.default]
+      [tls.stores.default.defaultCertificate]
+        certFile = "/certs/wildcard.pem"
+        keyFile = "/certs/wildcard-key.pem"
+
+  [[tls.certificates]]
+        certFile = "/certs/wildcard.pem"
+        keyFile = "/certs/wildcard-key.pem"
+    stores = ["default"]
+
+
